@@ -10,7 +10,7 @@
 ![EC2](images/lecture04/EC2.png)
 
 * セキュリティグループの作成
-![EC2-lecture04](images/lecture04/EC2-lecture04.png)
+![EC2-lecture04](images/lecture04/EC2-SG-lecture04.png)
 
 2. RDS
 * RDSの作成
