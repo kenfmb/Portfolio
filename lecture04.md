@@ -20,7 +20,7 @@
 ![RDS-SG-lecture04](images/lecture04/RDS-SG-lecture04.png)
 
 ## 3. EC2からRDSへの接続
-![EC2からRDS接続](images/lecture04/EC2-RDS接続.png)
+![EC2からRDS接続](images/lecture04/EC2-RDS.png)
 
 
 ## 4. 今回の課題から感じたこと学んだこと
