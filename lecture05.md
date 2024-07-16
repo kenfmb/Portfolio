@@ -2,7 +2,7 @@
 # 第5回課題
 
 ## 1.組み込みサーバ（Puma）だけで動作確認
-![Puma](images/1.組み込みサーバ（Puma）だけ で動作確認.png)
+![Puma](images/1.組み込みサーバ（Puma）だけで動作確認.png)
 
 ## 2.組み込みサーバとUnix Socketを使ったRailsアプリの動作確認
 ![UnixSocket](images/2.組み込みサーバとUnix Socketを使ったRailsアプリの動作確認.png)
