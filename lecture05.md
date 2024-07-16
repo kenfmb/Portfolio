@@ -5,7 +5,7 @@
 ![Puma](images/1.組み込みサーバ（Puma）だけで動作確認.png)
 
 ## 2.組み込みサーバとUnix Socketを使ったRailsアプリの動作確認
-![UnixSocket](images/2.組み込みサーバとUnix Socketを使ったRailsアプリの動作確認.png)
+![UnixSocket](images/2.組み込みサーバとUnixSocketを使ったRailsアプリの動作確認.png)
 
 ## 3.Nginxの単体起動確認
 ![Nginx](images/3.Nginxの単体起動確認.png)
