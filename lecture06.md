@@ -2,9 +2,7 @@
 
 ## CloudTrailのイベント
 * イベント名：ModifyTargetGroup 
-* 含まれている内容："healthCheckProtocol":"HTTP"
-　　　　　　　　　  "healthCheckPath": "/kkk"
-                    "healthCheckIntervalSeconds": 10
+* 含まれている内容："healthCheckProtocol":"HTTP" "healthCheckPath": "/kkk" "healthCheckIntervalSeconds": 10
 ![CloudTrailイベント1](images/lecture06/CloudTrailイベント1.png)
 
 ![CloudTrailイベント2](images/lecture06/CloudTrailイベント2.png)
