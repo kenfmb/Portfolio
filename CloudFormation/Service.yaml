@@ -1,6 +1,12 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: VPC and subnet
 
+Parameters:
+  NameBase:
+    Description: NameBase
+    Type: String
+    Default: lecture10
+
 Resources:
   # VPC作成
   MyVPC:
@@ -12,7 +18,7 @@ Resources:
       InstanceTenancy: default
       Tags:
         - Key: Name
-          Value: lecture10-VPC
+          Value: !Sub ${NameBase}-VPC
 
 #  サブネット作成
   PublicSubnet1A:
