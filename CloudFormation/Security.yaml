@@ -3,21 +3,19 @@ Description: security
 
 Parameters:
   KeyName:
-    Type:  AWS::EC2::KeyPair::KeyName
+    Type: AWS::EC2::KeyPair::KeyName
     Default: Mykeypair.pem
 
-Resources:   
+Resources:
   EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: EC2SG
       GroupDescription: EC2SG
       VpcId: !ImportValue MyVPCID
-      # アウトバウンド設定（フルオープン）
       SecurityGroupEgress:
         - CidrIp: 0.0.0.0/0
-          IpProtocol: -1
-      # インバウンド設定
+          IpProtocol: "-1"
       SecurityGroupIngress:
         - CidrIp: 0.0.0.0/0
           FromPort: 80
@@ -30,15 +28,13 @@ Resources:
       Tags:
         - Key: Name
           Value: EC2SG
-  
+
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupName: RDSSG
       GroupDescription: RDSSG
       VpcId: !ImportValue MyVPCID
-    
-      # インバウンド設定
       SecurityGroupIngress:
         - FromPort: 3306
           IpProtocol: tcp
@@ -54,11 +50,9 @@ Resources:
       GroupName: ALBSG
       GroupDescription: ALBSG
       VpcId: !ImportValue MyVPCID
-      # アウトバウンド設定（フルオープン）
       SecurityGroupEgress:
         - CidrIp: 0.0.0.0/0
-          IpProtocol: -1
-      # インバウンド設定
+          IpProtocol: "-1"
       SecurityGroupIngress:
         - CidrIp: 0.0.0.0/0
           FromPort: 80
