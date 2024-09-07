@@ -202,4 +202,3 @@ Outputs:
     Value: !Ref MyEC2Instance
     Export:
       Name: EC2ID
-      
