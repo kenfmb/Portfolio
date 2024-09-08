@@ -97,8 +97,8 @@ end
 ## テスト結果
 rake specでテスト実行
 
- ![実行結果](/image/lecture11/picture1.png)
- ![実行結果](/image/lecture11/picture2.png)
+ ![実行結果](/images/lecture11/picture1.png)
+ ![実行結果](/images/lecture11/picture2.png)
 
 ## 感想
 * 手動でやるとミスが起きたりするので、自動でテストをするのはよいと思いました。
