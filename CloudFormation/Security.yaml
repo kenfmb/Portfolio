@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: security
+
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: Mykeypair.pem
+
+Resources:
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: EC2SG
+      GroupDescription: EC2SG
+      VpcId: !ImportValue MyVPCID
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+        - CidrIp: 180.221.146.165/32
+          FromPort: 22
+          IpProtocol: tcp
+          ToPort: 22
+      Tags:
+        - Key: Name
+          Value: EC2SG
+
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: RDSSG
+      GroupDescription: RDSSG
+      VpcId: !ImportValue MyVPCID
+      SecurityGroupIngress:
+        - FromPort: 3306
+          IpProtocol: tcp
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref EC2SecurityGroup
+      Tags:
+        - Key: Name
+          Value: RDSSG
+
+  ALBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: ALBSG
+      GroupDescription: ALBSG
+      VpcId: !ImportValue MyVPCID
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+      Tags:
+        - Key: Name
+          Value: ALBSG
+
+Outputs:
+  EC2SG:
+    Value: !Ref EC2SecurityGroup
+    Export:
+      Name: EC2SecurityGroup
+
+  RDSSG:
+    Value: !Ref RDSSecurityGroup
+    Export:
+      Name: RDSSecurityGroup
+
+  ALBSG:
+    Value: !Ref ALBSecurityGroup
+    Export:
+      Name: ALBSecurityGroup
