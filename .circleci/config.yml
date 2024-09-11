@@ -10,7 +10,7 @@ jobs:
       - run:
           name: run cfn-lint
           command: |
-            cfn-lint -i W3002 -t /home/ec2-user/Portfolio/Cloudformation/*.yml
+            cfn-lint -i W3002 -t CloudFormation/*.yml
 
 workflows:
   raisetech:
