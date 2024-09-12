@@ -9,7 +9,7 @@ Parameters:
 
   AvailabilityZone1:
     Type: String
-    Default: "ap-northeast-1a"
+    Default: ap-northeast-1a
 
   InstanceType:
     Description: webserver EC2 instance type

@@ -4,10 +4,10 @@ Description: VPC and subnet
 Parameters:
   AvailabilityZone1:
     Type: String
-    Default: "ap-northeast-1a"
+    Default: ap-northeast-1a
   AvailabilityZone2:
     Type: String
-    Default: "ap-northeast-1c"
+    Default: ap-northeast-1c
 
 Resources:
   # VPC作成
@@ -28,7 +28,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: 10.0.0.0/24
-      AvailabilityZone: !Sub AvailabilityZone1
+      AvailabilityZone: !Ref AvailabilityZone1
       Tags:
         - Key: Name
           Value: PublicSubnet-1a
@@ -38,7 +38,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: 10.0.2.0/24
-      AvailabilityZone: !Sub AvailabilityZone2
+      AvailabilityZone: !Ref AvailabilityZone2
       Tags:
         - Key: Name
           Value: PublicSubnet-1c
@@ -48,7 +48,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: 10.0.1.0/24
-      AvailabilityZone: !Sub AvailabilityZone1
+      AvailabilityZone: !Ref AvailabilityZone1
       Tags:
         - Key: Name
           Value: PrivateSubnet-1a
@@ -58,7 +58,7 @@ Resources:
     Properties:
       VpcId: !Ref MyVPC
       CidrBlock: 10.0.3.0/24
-      AvailabilityZone: !Sub AvailabilityZone2
+      AvailabilityZone: !Ref AvailabilityZone2
       Tags:
         - Key: Name
           Value: PrivateSubnet-1c
