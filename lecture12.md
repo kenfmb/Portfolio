@@ -22,9 +22,8 @@
   origin/main
 
  #下記コマンドでcircleci-project-setupのブランチを作成
-[ec2-user@ip-10-0-2-218 Portfolio]$ git checkout -b circleci orijin/circleci-project-setup
+[ec2-user@ip-10-0-2-218 Portfolio]$ git checkout -b circleci-project-setup orijin/circleci-project-setup
 ```
-
  - config.ymlの詳細は下記参照
 ```
 version: 2.1
