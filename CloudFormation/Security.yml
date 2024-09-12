@@ -1,11 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: security
 
-Parameters:
-  KeyName:
-    Type: AWS::EC2::KeyPair::KeyName
-    Default: Mykeypair.pem
-
 Resources:
   EC2SecurityGroup:
     Type: AWS::EC2::SecurityGroup

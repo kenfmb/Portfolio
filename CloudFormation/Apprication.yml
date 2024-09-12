@@ -45,14 +45,16 @@ Resources:
           Value: !Sub ${NameBase}-ec2
 
       UserData:
-        "Fn::Base64": !Sub |
-          #!/bin/bash
-          yum update -y
-          yum install -y mysql
-          echo "[client]" > /home/ec2-user/.my.cnf
-          echo "user=lecture10" >> /home/ec2-user/.my.cnf
-          echo "password=lecture10" >> /home/ec2-user/.my.cnf
-          echo "host=${MyRDS.Endpoint.Address}" >> /home/ec2-user/.my.cnf
+        "Fn::Base64":
+          "Fn::Join":
+          - ""
+          - - "#!/bin/bash\n"
+            - "yum update -y\n"
+            - "yum install -y mysql\n"
+            - "echo \"[client]\" > /home/ec2-user/.my.cnf\n"
+            - "echo \"user=lecture10\" >> /home/ec2-user/.my.cnf\n"
+            - "echo \"password=lecture10\" >> /home/ec2-user/.my.cnf\n"
+            - !Sub "echo \"host=${MyRDS.Endpoint.Address}\" >> /home/ec2-user/.my.cnf\n"
 
   # Elastic IP作成
   MyElasticIP:
