@@ -7,6 +7,10 @@ Parameters:
     Type: String
     Default: lecture10
 
+  AvailabilityZone1:
+    Type: String
+    Default: "ap-northeast-1a"
+
   InstanceType:
     Description: webserver EC2 instance type
     Type: String
@@ -140,7 +144,7 @@ Resources:
     Properties:
       AllocatedStorage: "20"
       DBInstanceClass: db.t3.micro
-      AvailabilityZone: ap-northeast-1a
+      AvailabilityZone: !Ref AvailabilityZone1
       DBSubnetGroupName: !Ref RDSSubnetGroup
       Engine: mysql
       EngineVersion: 8.0.35
