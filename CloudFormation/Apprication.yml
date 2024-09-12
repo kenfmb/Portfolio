@@ -58,7 +58,8 @@ Resources:
             - "echo \"[client]\" > /home/ec2-user/.my.cnf\n"
             - "echo \"user=lecture10\" >> /home/ec2-user/.my.cnf\n"
             - "echo \"password=lecture10\" >> /home/ec2-user/.my.cnf\n"
-            - !Sub "echo \"host=${MyRDS.Endpoint.Address}\" >> /home/ec2-user/.my.cnf\n"
+            - "echo \"host=${MyRDS.Endpoint.Address}\" >> /home/ec2-user/.my.cnf\n"
+
 
   # Elastic IP作成
   MyElasticIP:
