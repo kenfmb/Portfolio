@@ -31,7 +31,7 @@ Resources:
     Properties:
       KeyName: !Ref KeyName
       InstanceType: !Ref InstanceType
-      ImageId: ami-03d25459ad01ac2b9
+      ImageId: "ami-03d25459ad01ac2b9"
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: "0"
@@ -76,7 +76,7 @@ Resources:
   MyS3:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: my-s3-20240731 # AmazonS3にある既存のすべてのバケット名と異なる必要がある
+      BucketName: "my-s3-20240731" # AmazonS3にある既存のすべてのバケット名と異なる必要がある
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -147,8 +147,8 @@ Resources:
       DBSubnetGroupName: !Ref RDSSubnetGroup
       Engine: mysql
       EngineVersion: 8.0.35
-      MasterUsername: !Sub '{{resolve:secretsmanager:RDSSecret:SecretString:username}}'
-      MasterUserPassword: !Sub '{{resolve:secretsmanager:RDSSecret:SecretString:password}}'
+      MasterUsername: '{{resolve:secretsmanager:RDSSecret:SecretString:username}}'
+      MasterUserPassword: '{{resolve:secretsmanager:RDSSecret:SecretString:password}}'
       MultiAZ: false
       StorageType: gp2
       VPCSecurityGroups:
