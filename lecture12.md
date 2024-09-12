@@ -22,7 +22,7 @@
   origin/main
 
  #下記コマンドでcircleci-project-setupのブランチを作成
-[ec2-user@ip-10-0-2-218 Portfolio]$ git checkout -b orijin/circleci-project-setup
+[ec2-user@ip-10-0-2-218 Portfolio]$ git checkout -b circleci orijin/circleci-project-setup
 ```
 
  - config.ymlの詳細は下記参照
@@ -46,6 +46,7 @@ workflows:
     jobs:
       - cfn-lint
 ```
+ ## 結果
   ![結果1](images/lecture12/結果1.png)
 　![結果2](images/lecture12/結果2.png)
 
