@@ -1,18 +1,22 @@
 version: 2.1
 orbs:
-  python: circleci/python@2.0.3
+  aws-cli: circleci/aws-cli@4.1.3
+  
 jobs:
-  cfn-lint:
-    executor: python/default
+  execute-cloudformation:
+    executor: aws-cli/default
     steps:
       - checkout
-      - run: pip install cfn-lint
+      - aws-cli/setup:
+          aws_access_key_id: AWS_ACCESS_KEY_ID
+          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+          region: AWS_DEFAULT_REGION
       - run:
-          name: run cfn-lint
+          name: Deploy to aws from template
           command: |
-            cfn-lint -i W3002 -t CloudFormation/*.yml
-
+            set -x
+            aws cloudformation deploy --template CloudFormation/Apprication.yml --stack-name sampleStackFromCircleCI
 workflows:
-  raisetech:
+  CircleCI-Practice-workflow:
     jobs:
-      - cfn-lint
+      - execute-cloudformation
