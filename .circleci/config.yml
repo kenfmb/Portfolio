@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@4.2.3
-  
+  ansible-playbook: orbss/ansible-playbook@0.0.5
 jobs:
   execute-cloudformation:
     executor: aws-cli/default
@@ -26,8 +26,19 @@ jobs:
           command: |
             set -x
             aws cloudformation deploy --template CloudFormation/Apprication.yml --stack-name sampleStackFromCircleCI --capabilities CAPABILITY_IAM
-
+  execute-ansible:
+    executor: ansible-playbook/default
+    steps:
+      - checkout
+      - add_ssh_keys:
+        fingerprints:
+          - "SHA256:dpznv9lf1KoGDaoTyN5uT7eyoId6sMY60QHl4unOQDI"
+      - ansible-playbook/install:
+          version: 2.16.7
 workflows:
   CircleCI-Practice-workflow:
     jobs:
       - execute-cloudformation
+      - execute-ansible:
+          requires:
+            - execute-cloudformation
