@@ -16,6 +16,17 @@ jobs:
           command: |
             set -x
             aws cloudformation deploy --template CloudFormation/Apprication.yml --stack-name sampleStackFromCircleCI --capabilities CAPABILITY_IAM
+      - run:
+          name: Deploy Service Stack
+          command: |
+            set -x
+            aws cloudformation deploy --template-file CloudFormation/Service.yml --stack-name sampleServiceStack --capabilities CAPABILITY_IAM
+      - run:
+          name: Deploy Security Stack
+          command: |
+            set -x
+            aws cloudformation deploy --template-file CloudFormation/Security.yml --stack-name sampleSecurityStack --capabilities CAPABILITY_IAM
+
 workflows:
   CircleCI-Practice-workflow:
     jobs:
