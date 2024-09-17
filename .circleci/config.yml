@@ -31,10 +31,10 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-        fingerprints:
-          - "SHA256:dpznv9lf1KoGDaoTyN5uT7eyoId6sMY60QHl4unOQDI"
+          fingerprints:
+            - "SHA256:dpznv9lf1KoGDaoTyN5uT7eyoId6sMY60QHl4unOQDI"
       - ansible-playbook/install:
-          version: 2.16.7
+          version: "2.16.7"
 workflows:
   CircleCI-Practice-workflow:
     jobs:
