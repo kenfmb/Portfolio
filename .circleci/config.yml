@@ -1,10 +1,20 @@
 version: 2.1
 orbs:
+  python: circleci/python@2.0.3
   aws-cli: circleci/aws-cli@4.2.3
   ansible-playbook: orbss/ansible-playbook@0.0.5
   ruby: circleci/ruby@2.1.4
 
 jobs:
+  cfn-lint:
+    executor: python/default
+    steps:
+      - checkout
+      - run: pip install cfn-lint
+      - run:
+          name: run cfn-lint
+          command: |
+            cfn-lint -i W3002 -t cloudformation/*.yml
   execute-cloudformation:
     executor: aws-cli/default
     steps:
@@ -56,6 +66,7 @@ jobs:
 workflows:
   CircleCI-Practice-workflow:
     jobs:
+      - cfn-lint
       - execute-cloudformation
       - execute-ansible:
           requires:
