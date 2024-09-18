@@ -37,7 +37,7 @@ jobs:
           version: "2.10.7"
       - ansible-playbook/playbook:
           playbook: ansible/playbook.yml
-          playbook-option: -u ec2-user -i ansible/inventory --private-key ~/.ssh/ansible
+          playbook-options: -u ec2-user -i ansible/inventory --private-key ~/.ssh/ansible
 workflows:
   CircleCI-Practice-workflow:
     jobs:
