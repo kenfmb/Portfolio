@@ -46,6 +46,13 @@ jobs:
       - checkout
       - ruby/install:
           version: 3.2.3
+      - ruby/install-deps:
+          app-dir: serverspec
+      - run:
+          name: execute
+          command: |
+            cd serverspec
+            bundle exec rspec
 workflows:
   CircleCI-Practice-workflow:
     jobs:
