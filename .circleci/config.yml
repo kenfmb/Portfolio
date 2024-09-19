@@ -1,0 +1,33 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@4.2.3
+  
+jobs:
+  execute-cloudformation:
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          aws_access_key_id: AWS_ACCESS_KEY_ID
+          aws_secret_access_key: AWS_SECRET_ACCESS_KEY
+          region: AWS_DEFAULT_REGION
+      - run:
+          name: Deploy Service Stack
+          command: |
+            set -x
+            aws cloudformation deploy --template-file CloudFormation/Service.yml --stack-name sampleServiceStack --capabilities CAPABILITY_IAM
+      - run:
+          name: Deploy Security Stack
+          command: |
+            set -x
+            aws cloudformation deploy --template-file CloudFormation/Security.yml --stack-name sampleSecurityStack --capabilities CAPABILITY_IAM
+      - run:
+          name: Deploy to aws from template
+          command: |
+            set -x
+            aws cloudformation deploy --template CloudFormation/Apprication.yml --stack-name sampleStackFromCircleCI --capabilities CAPABILITY_IAM
+
+workflows:
+  CircleCI-Practice-workflow:
+    jobs:
+      - execute-cloudformation

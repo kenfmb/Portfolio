@@ -22,11 +22,11 @@
 
 ### テンプレート
 
--  [**Service.yaml**](CloudFormation/Service.yaml)
+-  [**Service.yml**](CloudFormation/Service.yml)
 
--  [**Security.yaml**](CloudFormation/Security.yaml)
+-  [**Security.yml**](CloudFormation/Security.yml)
 
--  [**Application.yaml**](CloudFormation/Application.yaml)
+-  [**Application.yml**](CloudFormation/Application.yml)
 
  
 ### **1. VPC**

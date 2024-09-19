@@ -7,6 +7,10 @@ Parameters:
     Type: String
     Default: lecture10
 
+  AvailabilityZone1:
+    Type: String
+    Default: ap-northeast-1a
+
   InstanceType:
     Description: webserver EC2 instance type
     Type: String
@@ -27,7 +31,7 @@ Resources:
     Properties:
       KeyName: !Ref KeyName
       InstanceType: !Ref InstanceType
-      ImageId: ami-03d25459ad01ac2b9
+      ImageId: "ami-03d25459ad01ac2b9"
       NetworkInterfaces:
         - AssociatePublicIpAddress: true
           DeviceIndex: "0"
@@ -45,7 +49,7 @@ Resources:
           Value: !Sub ${NameBase}-ec2
 
       UserData:
-        "Fn::Base64": !Sub |
+        Fn::Base64: !Sub |
           #!/bin/bash
           yum update -y
           yum install -y mysql
@@ -53,6 +57,7 @@ Resources:
           echo "user=lecture10" >> /home/ec2-user/.my.cnf
           echo "password=lecture10" >> /home/ec2-user/.my.cnf
           echo "host=${MyRDS.Endpoint.Address}" >> /home/ec2-user/.my.cnf
+
 
   # Elastic IP作成
   MyElasticIP:
@@ -71,7 +76,7 @@ Resources:
   MyS3:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: my-s3-20240731 # AmazonS3にある既存のすべてのバケット名と異なる必要がある
+      BucketName: "my-s3-20240731" # AmazonS3にある既存のすべてのバケット名と異なる必要がある
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -138,12 +143,12 @@ Resources:
     Properties:
       AllocatedStorage: "20"
       DBInstanceClass: db.t3.micro
-      AvailabilityZone: ap-northeast-1a
+      AvailabilityZone: !Ref AvailabilityZone1
       DBSubnetGroupName: !Ref RDSSubnetGroup
       Engine: mysql
       EngineVersion: 8.0.35
-      MasterUsername: !Sub '{{resolve:secretsmanager:RDSSecret:SecretString:username}}'
-      MasterUserPassword: !Sub '{{resolve:secretsmanager:RDSSecret:SecretString:password}}'
+      MasterUsername: '{{resolve:secretsmanager:RDSSecret:SecretString:username}}'
+      MasterUserPassword: '{{resolve:secretsmanager:RDSSecret:SecretString:password}}'
       MultiAZ: false
       StorageType: gp2
       VPCSecurityGroups:
