@@ -12,7 +12,7 @@
   * Ansible を実行する
   * ServerSpec を実行し、テストを自動化する
 ## 構成図 
-![AWS構成図](images/AWS構成図 (2).png)
+![AWS構成図](images/構成図.png)
 
 ## 学習記録
 | No. | 概要 | 課題 | レポート |  
